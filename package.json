@@ -12,8 +12,17 @@
     "build": "webpack --mode production"
   },
   "dependencies": {
+    "@blueprintjs/core": "^3.51.3",
+    "@fortawesome/fontawesome-svg-core": "^1.2.36",
+    "@fortawesome/free-solid-svg-icons": "^5.15.4",
+    "@fortawesome/react-fontawesome": "^0.1.16",
+    "axios": "^0.24.0",
+    "blueprintjs": "0.0.8",
+    "eslint-plugin-react-hooks": "^4.2.0",
     "react": "^16.3.1",
-    "react-dom": "^16.3.1"
+    "react-bootstrap": "^2.0.3",
+    "react-dom": "^16.3.1",
+    "react-icons": "^4.3.1"
   },
   "devDependencies": {
     "babel-core": "6.26.*",

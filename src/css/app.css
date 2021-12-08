@@ -21,5 +21,7 @@
 
 #app .container-view {
   padding: 20px;
+  background-color: #fff;
+  min-height: 545px;
 }
 
