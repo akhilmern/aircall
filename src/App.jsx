@@ -1,11 +1,11 @@
 import React, { useState, useEffect } from "react";
 import ReactDOM from "react-dom";
 import axios from "axios";
-
+import { Icon, Spinner} from "@blueprintjs/core";
+import {ACTIVITIES_API} from "./constants.jsx";
 import CallHistory from "./components/CallHistory.jsx";
 import Footer from "./layout/Footer.jsx";
 import Header from "./layout/Header.jsx";
-
 
 const App = () => {
   const [activities, setActivities] = useState([]);
@@ -14,7 +14,7 @@ const App = () => {
   const [filteredActivities, setFilteredActivities] = useState([]);
 
   useEffect(() => {
-    axios.get("https://aircall-job.herokuapp.com/activities").then((res) => {
+    axios.get(ACTIVITIES_API).then((res) => {
       setActivities(res.data);
       setIsLoaded(true);
     });
@@ -34,16 +34,43 @@ const App = () => {
           .sort((a, b) => (b.created_at - a.created_at ? -1 : 1))
       );
     }
-
   }, [activities, currentView]);
+
+  const handleArchiveCalls = () => {
+    
+    const archivedActivities = []
+    activities.forEach(activity =>{
+      axios
+      .post(`${ACTIVITIES_API}/${activity.id}`, {
+        is_archived: false,
+      })
+      .then((res) => {
+        archivedActivities.push(res.data)
+      });
+    })
+    setActivities(archivedActivities);
+  
+  };
 
   return (
     <div className="container">
       <Header />
       <div className="container-view">
         {!isLoaded ? (
-          "loading"
+            <Spinner intent="Danger" size="30" />
         ) : (
+          <div>
+            {currentView==="HISTORY" && (
+            <div className="call-detail">
+            <span className="arhiveIcon">
+            <Icon icon="archive" size={23} color="#424242" />
+            </span>
+            <span className="archiveText" onClick={handleArchiveCalls}>
+              <strong>Archive all calls</strong>
+            </span>
+          </div>
+            )}
+
             <CallHistory
               activities={activities}
               setActivities={setActivities}
@@ -51,12 +78,10 @@ const App = () => {
               setFilteredActivities={setFilteredActivities}
               setIsLoaded={setIsLoaded}
             />
-          )}
+          </div>
+        )}
       </div>
-      <Footer
-        setCurrentView={setCurrentView}
-        currentView={currentView}
-      />
+      <Footer setCurrentView={setCurrentView} currentView={currentView} />
     </div>
   );
 };

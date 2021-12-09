@@ -1,15 +1,13 @@
 import React, { Fragment } from "react";
 import axios from "axios";
 import "../css/callLogs.css";
-import { HiArchive } from "react-icons/hi";
-import { H5, Icon, IconSize, Intent, Label, Slider } from "@blueprintjs/core";
-import { phone } from "@blueprintjs/icons";
-
+import {ACTIVITIES_API} from "../constants.jsx"
+import { Icon} from "@blueprintjs/core";
 
 const CallDetail = ({ activity, activities, setActivities }) => {
   const handleArchiveCall = () => {
     axios
-      .post(`https://aircall-job.herokuapp.com/activities/${activity.id}`, {
+      .post(`${ACTIVITIES_API}/${activity.id}`, {
         is_archived: !activity.is_archived,
       })
       .then((res) => {
@@ -20,35 +18,38 @@ const CallDetail = ({ activity, activities, setActivities }) => {
       });
   };
 
-  let icon = "";
+  let callColor = "";
   if (activity.call_type === "missed") {
-    icon = (
-      <span
-
-      >
-        <Icon icon={phone} size={23} />
-      </span>
-    );
+    callColor = "red";
   } else if (activity.call_type === "answered") {
-    icon = (
-      <span
-
-      >
-        <Icon icon={phone} size={23} />
-      </span>
-    );
+    callColor = "#48db80";
   } else if (activity.call_type === "voicemail") {
-    icon = (
-      <span
-
-      >
-        <Icon icon={phone} size={23} />
-      </span>
-    );
+    callColor = "yellow";
   }
 
   const date = new Date(activity.created_at);
-  const month = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
+  const month = [
+    "January",
+    "February",
+    "March",
+    "April",
+    "May",
+    "June",
+    "July",
+    "August",
+    "September",
+    "October",
+    "November",
+    "December",
+  ];
+
+  function formatNumber(n){
+    return n > 9 ? "" + n: "0" + n;
+  }
+
+  let hours = date.getHours();
+  const formattedHours = hours > 12 ? formatNumber(hours-12) : hours;
+
 
   if (!activities) return null;
   return (
@@ -57,13 +58,17 @@ const CallDetail = ({ activity, activities, setActivities }) => {
         <h5>
           <span>
             <strong>
-              {`${month[date.getMonth()]} , ${date.getDate()}  ${date.getFullYear()}`}
+              {`${
+                month[date.getMonth()]
+              }, ${date.getDate()}  ${date.getFullYear()}`}
             </strong>
           </span>
         </h5>
       </div>
-      <div className="call-detail" >
-        <div className="call-icon"><Icon icon={phone} size={23} /></div>
+      <div className="call-detail">
+        <div className="call-icon">
+          <Icon icon="phone" size={23} color={callColor}/>
+        </div>
         <div className="call-info">
           <h3>{activity.from}</h3>
           <h4>
@@ -71,12 +76,13 @@ const CallDetail = ({ activity, activities, setActivities }) => {
           </h4>
         </div>
         <div className="call-time">
-          <p>
-            {`${date.getHours()} : ${date.getMinutes()}`}
-          </p>
+          <p>{`${formattedHours} : ${date.getMinutes()}`}</p>
+        </div>
+        <div className="call-time">
+        {hours < 12 ? 'AM' : 'PM'}  
         </div>
         <div className="call-archive" onClick={handleArchiveCall}>
-          <HiArchive />
+          <Icon icon="archive" size={9} color="#424242" />
         </div>
       </div>
     </Fragment>

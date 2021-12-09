@@ -45,6 +45,8 @@ p {
     justify-content: center;
   }
   
+
+
   .call-detail {
     border: 1px solid rgb(230, 230, 230);
     border-radius: 15px;
@@ -65,9 +67,14 @@ p {
     padding-right: 10px;
     align-self: center;
   }
+
+  .archiveText{
+    padding-top:7px;
+    padding-left:20px;
+  }
   
   .call-info {
-    flex-basis: 68%;
+    flex-basis: 56%;
     background-image: linear-gradient(
       to bottom,
       rgb(167 167 167) 10%,

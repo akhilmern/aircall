@@ -36,7 +36,7 @@
   }
 
   .footerButtons button:hover {
-    border-bottom: 2px solid #48db80;
+    border-bottom: 4px solid #48db80;
   }
   
   footer svg {
@@ -58,9 +58,8 @@
   }
   
   .midButton:hover {
-border:   1px solid #000;
+    border: 1px solid #000;
   }
-  
 
   .historyButtons{
     margin-right:5px

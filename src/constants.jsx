@@ -1,0 +1,1 @@
+export const ACTIVITIES_API = 'https://aircall-job.herokuapp.com/activities';
