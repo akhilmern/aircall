@@ -1,11 +1,15 @@
+## Aircall Assignment Submission
+
+Please visit this link to head to the live demo: https://eager-easley-f3209f.netlify.app/
+
 ## Summary
 
-The goal of this test is to make you code a small ReactJS app. We have prepared a skeleton app for you, but please change whatever you want (CSS files, HTML structure, JS structure, etc).
-
-The app will have two different components:
+The app contains the following functionalities
 - **Activity Feed** - simple list of calls
 - **Activity Detail** - detail of a call
 - **Archive** - the final user should be able to archive (and unarchive) a call. Archived calls will no longer be displayed on the Activity Feed and should have a separate Archived Tab.
+
+The goal of this test is to make you code a small ReactJS app. We have prepared a skeleton app for you, but please change whatever you want (CSS files, HTML structure, JS structure, etc).
 
 Show us what you can do in 24 hours. You will be assessed on the following parameters: 
 - Focus on design (Pay attention to the UI/UX and transitions)
