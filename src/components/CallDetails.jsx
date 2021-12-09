@@ -4,7 +4,7 @@ import "../css/callLogs.css";
 import {ACTIVITIES_API} from "../constants.jsx"
 import { Icon} from "@blueprintjs/core";
 
-const CallDetail = ({ activity, activities, setActivities }) => {
+const CallDetail = ({ activity, activities, setActivities, currentView }) => {
   const handleArchiveCall = () => {
     axios
       .post(`${ACTIVITIES_API}/${activity.id}`, {
@@ -21,11 +21,11 @@ const CallDetail = ({ activity, activities, setActivities }) => {
   let callColor = "";
   if (activity.call_type === "missed") {
     callColor = "red";
-  } else if (activity.call_type === "answered") {
+  } else {
     callColor = "#48db80";
-  } else if (activity.call_type === "voicemail") {
-    callColor = "yellow";
-  }
+  } 
+
+  const callIcon = (activity.call_type === "voicemail") ? "group-objects" : "phone";
 
   const date = new Date(activity.created_at);
   const month = [
@@ -50,11 +50,12 @@ const CallDetail = ({ activity, activities, setActivities }) => {
   let hours = date.getHours();
   const formattedHours = hours > 12 ? formatNumber(hours-12) : hours;
 
+  const archiveIcon = (currentView === "HISTORY") ? "archive" : "unarchive";
 
   if (!activities) return null;
   return (
     <Fragment>
-      <div className="call-date">
+      <div className="callDate">
         <h5>
           <span>
             <strong>
@@ -65,24 +66,25 @@ const CallDetail = ({ activity, activities, setActivities }) => {
           </span>
         </h5>
       </div>
-      <div className="call-detail">
-        <div className="call-icon">
-          <Icon icon="phone" size={23} color={callColor}/>
+      <div className="callDetail">
+        <div className="callIcon">
+          <Icon icon={callIcon} size={23} color={callColor}/>
         </div>
-        <div className="call-info">
+        <div className="callInfo">
           <h3>{activity.from}</h3>
           <h4>
             tried to call on <strong>{activity.via}</strong>
           </h4>
         </div>
-        <div className="call-time">
-          <p>{`${formattedHours} : ${date.getMinutes()}`}</p>
+        <div className="callTime">
+          <p>{`${formattedHours} : ${formatNumber(date.getMinutes())}`}</p>
         </div>
-        <div className="call-time">
+        <div className="callTime">
         {hours < 12 ? 'AM' : 'PM'}  
         </div>
-        <div className="call-archive" onClick={handleArchiveCall}>
-          <Icon icon="archive" size={9} color="#424242" />
+        <div className="callArchive" onClick={handleArchiveCall}>
+          <Icon icon={archiveIcon} size={15} color="#424242" />
+
         </div>
       </div>
     </Fragment>

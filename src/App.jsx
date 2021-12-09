@@ -1,8 +1,8 @@
 import React, { useState, useEffect } from "react";
 import ReactDOM from "react-dom";
 import axios from "axios";
-import { Icon, Spinner} from "@blueprintjs/core";
-import {ACTIVITIES_API} from "./constants.jsx";
+import { Icon, Spinner } from "@blueprintjs/core";
+import { ACTIVITIES_API } from "./constants.jsx";
 import CallHistory from "./components/CallHistory.jsx";
 import Footer from "./layout/Footer.jsx";
 import Header from "./layout/Header.jsx";
@@ -12,6 +12,20 @@ const App = () => {
   const [isLoaded, setIsLoaded] = useState(false);
   const [currentView, setCurrentView] = useState("HISTORY");
   const [filteredActivities, setFilteredActivities] = useState([]);
+console.log(activities)
+  const handleArchiveCalls = () => {
+    const archivedActivities = [];
+    activities.forEach((activity) => {
+      axios
+        .post(`${ACTIVITIES_API}/${activity.id}`, {
+          is_archived: false,
+        })
+        .then((res) => {
+          archivedActivities.push(res.data);
+        });
+    });
+    setActivities(archivedActivities);
+  };
 
   useEffect(() => {
     axios.get(ACTIVITIES_API).then((res) => {
@@ -36,39 +50,23 @@ const App = () => {
     }
   }, [activities, currentView]);
 
-  const handleArchiveCalls = () => {
-    
-    const archivedActivities = []
-    activities.forEach(activity =>{
-      axios
-      .post(`${ACTIVITIES_API}/${activity.id}`, {
-        is_archived: false,
-      })
-      .then((res) => {
-        archivedActivities.push(res.data)
-      });
-    })
-    setActivities(archivedActivities);
-  
-  };
-
   return (
     <div className="container">
       <Header />
       <div className="container-view">
         {!isLoaded ? (
-            <Spinner intent="Danger" size="30" />
+          <Spinner intent="Danger" size="30" />
         ) : (
           <div>
-            {currentView==="HISTORY" && (
-            <div className="call-detail">
-            <span className="arhiveIcon">
-            <Icon icon="archive" size={23} color="#424242" />
-            </span>
-            <span className="archiveText" onClick={handleArchiveCalls}>
-              <strong>Archive all calls</strong>
-            </span>
-          </div>
+            {currentView === "HISTORY" && (
+              <div className="callDetail">
+                <span className="arhiveIcon">
+                  <Icon icon="archive" size={23} color="#424242" />
+                </span>
+                <span className="archiveText" onClick={handleArchiveCalls}>
+                  <strong>Archive all calls</strong>
+                </span>
+              </div>
             )}
 
             <CallHistory
@@ -77,6 +75,7 @@ const App = () => {
               filteredActivities={filteredActivities}
               setFilteredActivities={setFilteredActivities}
               setIsLoaded={setIsLoaded}
+              currentView={currentView}
             />
           </div>
         )}

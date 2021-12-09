@@ -1,97 +1,95 @@
+h3 {
+  font-size: 1.1em;
+  font-weight: bold;
+  padding-bottom: 6px;
+}
+
+h4 {
+  color: rgb(163, 163, 163);
+  font-size: 0.9em;
+  font-weight: normal;
+  margin: 0;
+  padding: 0;
+}
+
+h5 {
+  color: rgb(163, 163, 163);
+  width: 100%;
+  text-align: center;
+  line-height: 0.1em;
+  margin: 10px 0 10px;
+  background-image: linear-gradient(
+    to right,
+    #939393 23%,
+    rgba(255, 255, 255, 0) 0%
+  );
+  background-position: bottom;
+  background-size: 5px 8px;
+  background-repeat: repeat-x;
+}
+
+h5 span {
+  background: rgb(248, 248, 248);
+  padding: 0 10px;
+}
+
 p {
-    margin: 0;
-    padding: 0;
-  }
-  
-  h3 {
-    font-size: 1.1em;
-    font-weight: bold;
-    padding-bottom: 6px;
-  }
-  
-  h4 {
-    color: rgb(163, 163, 163);
-    font-size: 0.9em;
-    font-weight: normal;
-    margin: 0;
-    padding: 0;
-  }
-  
-  h5 {
-    color: rgb(163, 163, 163);
-    width: 100%;
-    text-align: center;
-    line-height: 0.1em;
-    margin: 10px 0 10px;
-    background-image: linear-gradient(
-      to right,
-      #939393 23%,
-      rgba(255, 255, 255, 0) 0%
-    );
-    background-position: bottom;
-    background-size: 5px 8px;
-    background-repeat: repeat-x;
-  }
-  
-  h5 span {
-    background: rgb(248, 248, 248);
-    padding: 0 10px;
-  }
-  
-  .call-date {
-    padding: 0px 0px 10px 0px;
-    display: flex;
-    flex-direction: row;
-    justify-content: center;
-  }
-  
+  margin: 0;
+  padding: 0;
+}
 
+.callDate {
+  padding: 0px 0px 10px 0px;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+}
 
-  .call-detail {
-    border: 1px solid rgb(230, 230, 230);
-    border-radius: 15px;
-    padding: 15px 5px 15px 15px;
-    display: flex;
-    flex-direction: row;
-    margin-bottom: 10px;
-    cursor: pointer;
-    background-color: #fff;
-    transition: all 0.2s ease-in-out;
-  }
-  
-  .call-detail:hover {
-    border-bottom: 3px solid #48db80
-  }
-  
-  .call-icon {
-    padding-right: 10px;
-    align-self: center;
-  }
+.callDetail {
+  border: 1px solid rgb(230, 230, 230);
+  border-radius: 15px;
+  padding: 15px 5px 15px 15px;
+  display: flex;
+  flex-direction: row;
+  margin-bottom: 10px;
+  cursor: pointer;
+  background-color: #fff;
+  transition: all 0.2s ease-in-out;
+}
 
-  .archiveText{
-    padding-top:7px;
-    padding-left:20px;
-  }
-  
-  .call-info {
-    flex-basis: 56%;
-    background-image: linear-gradient(
-      to bottom,
-      rgb(167 167 167) 10%,
-      rgba(121, 121, 121, 0) 0%
-    );
-    background-position: right;
-    background-size: 1px 8px;
-    background-repeat: repeat-y;
-  }
-  
-  .call-time {
-    align-self: center;
-    color: rgb(163, 163, 163);
-    padding-left: 5px;
-  }
+.callDetail:hover {
+  border-bottom: 3px solid #48db80;
+}
 
-  .call-archive{
-    padding-top:8px;
-    padding-left:15px;
-  }
+.callIcon {
+  padding-right: 10px;
+  align-self: center;
+}
+
+.archiveText {
+  padding-top: 7px;
+  padding-left: 20px;
+}
+
+.callInfo {
+  flex-basis: 56%;
+  background-image: linear-gradient(
+    to bottom,
+    rgb(167 167 167) 10%,
+    rgba(121, 121, 121, 0) 0%
+  );
+  background-position: right;
+  background-size: 1px 8px;
+  background-repeat: repeat-y;
+}
+
+.callTime {
+  align-self: center;
+  color: rgb(163, 163, 163);
+  padding-left: 5px;
+}
+
+.callArchive {
+  padding-top: 8px;
+  padding-left: 15px;
+}
