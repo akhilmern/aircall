@@ -18,11 +18,9 @@ h5 {
   text-align: center;
   line-height: 0.1em;
   margin: 10px 0 10px;
-  background-image: linear-gradient(
-    to right,
-    #939393 23%,
-    rgba(255, 255, 255, 0) 0%
-  );
+  background-image: linear-gradient(to right,
+      #939393 23%,
+      rgba(255, 255, 255, 0) 0%);
   background-position: bottom;
   background-size: 5px 8px;
   background-repeat: repeat-x;
@@ -73,11 +71,9 @@ p {
 
 .callInfo {
   flex-basis: 56%;
-  background-image: linear-gradient(
-    to bottom,
-    rgb(167 167 167) 10%,
-    rgba(121, 121, 121, 0) 0%
-  );
+  background-image: linear-gradient(to bottom,
+      rgb(167 167 167) 10%,
+      rgba(121, 121, 121, 0) 0%);
   background-position: right;
   background-size: 1px 8px;
   background-repeat: repeat-y;

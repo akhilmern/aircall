@@ -1,7 +1,7 @@
 import React from "react";
 import { GrTty } from "react-icons/gr";
 import { IconContext } from "react-icons";
-import { Icon} from "@blueprintjs/core";
+import { Icon } from "@blueprintjs/core";
 
 const Footer = (props) => {
   const { currentView, setCurrentView } = props;
@@ -17,7 +17,7 @@ const Footer = (props) => {
           className="historyButtons"
           onClick={() => changeView("HISTORY")}
         >
-              <Icon icon="menu" size={23} color="#424242" />
+          <Icon icon="menu" size={23} color="#424242" />
         </button>
         {(currentView === "HISTORY" || currentView === "ARCHIVE") && (
           <button className="midButton">
@@ -30,7 +30,7 @@ const Footer = (props) => {
           className="archiveButtons"
           onClick={() => changeView("ARCHIVE")}
         >
-              <Icon icon="archive" size={15} color="#424242" />
+          <Icon icon="archive" size={15} color="#424242" />
         </button>
       </div>
     </footer>

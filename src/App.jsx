@@ -9,10 +9,9 @@ import Header from "./layout/Header.jsx";
 
 const App = () => {
   const [activities, setActivities] = useState([]);
-  const [isLoaded, setIsLoaded] = useState(false);
+  const [, setIsLoaded] = useState(false);
   const [currentView, setCurrentView] = useState("HISTORY");
   const [filteredActivities, setFilteredActivities] = useState([]);
-console.log(activities)
   const handleArchiveCalls = () => {
     const archivedActivities = [];
     activities.forEach((activity) => {
@@ -54,9 +53,7 @@ console.log(activities)
     <div className="container">
       <Header />
       <div className="container-view">
-        {!isLoaded ? (
-          <Spinner intent="Danger" size="30" />
-        ) : (
+    
           <div>
             {currentView === "HISTORY" && (
               <div className="callDetail">
@@ -78,7 +75,7 @@ console.log(activities)
               currentView={currentView}
             />
           </div>
-        )}
+      
       </div>
       <Footer setCurrentView={setCurrentView} currentView={currentView} />
     </div>
